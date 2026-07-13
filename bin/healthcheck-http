@@ -1,0 +1,5 @@
+#!/usr/bin/env sh
+# healthcheck-http URL [timeout-seconds] — HEALTHCHECK-friendly HTTP probe.
+set -eu
+URL="${1:?usage: healthcheck-http <url> [timeout]}"
+exec curl -sfo /dev/null --max-time "${2:-5}" "$URL"

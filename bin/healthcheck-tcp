@@ -1,0 +1,4 @@
+#!/usr/bin/env sh
+# healthcheck-tcp HOST PORT — HEALTHCHECK-friendly TCP probe.
+set -eu
+exec nc -z "${1:?host}" "${2:?port}"

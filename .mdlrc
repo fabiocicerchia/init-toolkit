@@ -1,0 +1,2 @@
+# MD013 (line length) doesn't apply to badges, tables, and fenced code.
+rules "~MD013"
