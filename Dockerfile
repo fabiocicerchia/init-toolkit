@@ -6,7 +6,7 @@ FROM alpine:3.24 AS fetch
 ARG DOCKERIZE_VERSION
 ARG TARGETARCH=amd64
 # ponytail: apk versions pinned for reproducibility; bump when alpine base bumps (Alpine GCs old versions)
-RUN apk add --no-cache curl=8.14.1-r3 ca-certificates=20260611-r0 tar=1.35-r3
+RUN apk add --no-cache curl=8.21.0-r0 ca-certificates=20260611-r0 tar=1.35-r5
 RUN curl -fsSL "https://github.com/jwilder/dockerize/releases/download/v${DOCKERIZE_VERSION}/dockerize-linux-${TARGETARCH}-v${DOCKERIZE_VERSION}.tar.gz" \
       | tar -xz -C / dockerize \
  && chmod 0755 /dockerize
@@ -21,7 +21,7 @@ LABEL org.opencontainers.image.title="init-toolkit" \
       org.opencontainers.image.version="${DOCKERIZE_VERSION}" \
       org.opencontainers.image.licenses="Apache-2.0" \
       org.opencontainers.image.source="https://github.com/fabiocicerchia/init-toolkit"
-RUN apk add --no-cache bash=5.2.37-r0 curl=8.14.1-r3 netcat-openbsd=1.229.1-r0 ca-certificates=20260611-r0 \
+RUN apk add --no-cache bash=5.3.9-r1 curl=8.21.0-r0 netcat-openbsd=1.234.1-r0 ca-certificates=20260611-r0 \
  && adduser -D -u 10001 init
 COPY --from=fetch /dockerize /usr/local/bin/dockerize
 COPY --from=fetch /wait-for-it /usr/local/bin/wait-for-it
