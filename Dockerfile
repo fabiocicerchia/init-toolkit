@@ -2,7 +2,7 @@
 # helpers for initContainers, entrypoint wrappers and compose depends_on gaps.
 ARG DOCKERIZE_VERSION=0.9.3
 
-FROM alpine:3.22 AS fetch
+FROM alpine:3.24 AS fetch
 ARG DOCKERIZE_VERSION
 ARG TARGETARCH=amd64
 # ponytail: apk versions pinned for reproducibility; bump when alpine base bumps (Alpine GCs old versions)
@@ -14,7 +14,7 @@ RUN curl -fsSLo /wait-for-it \
       "https://raw.githubusercontent.com/vishnubob/wait-for-it/81b1373f17855a4dc21156cfe1694c31d7d1792e/wait-for-it.sh" \
  && chmod 0755 /wait-for-it
 
-FROM alpine:3.22
+FROM alpine:3.24
 ARG DOCKERIZE_VERSION
 LABEL org.opencontainers.image.title="init-toolkit" \
       org.opencontainers.image.description="wait-for-it + dockerize + healthcheck helpers for init containers" \
