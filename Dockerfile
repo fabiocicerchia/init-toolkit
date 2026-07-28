@@ -27,5 +27,10 @@ COPY --from=fetch /dockerize /usr/local/bin/dockerize
 COPY --from=fetch /wait-for-it /usr/local/bin/wait-for-it
 COPY bin/ /usr/local/bin/
 USER 10001
+
+# Used as a Kubernetes initContainer / one-shot entrypoint wrapper — it runs
+# to completion and exits, so there's nothing to health-check.
+HEALTHCHECK NONE
+
 ENTRYPOINT ["/usr/local/bin/wait-for"]
 CMD ["--help"]
