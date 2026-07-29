@@ -7,6 +7,8 @@ ARG DOCKERIZE_VERSION
 ARG TARGETARCH=amd64
 # ponytail: apk versions pinned for reproducibility; bump when alpine base bumps (Alpine GCs old versions)
 RUN apk add --no-cache curl=8.21.0-r0 ca-certificates=20260611-r0 tar=1.35-r5
+# pipefail so a failing curl aborts the build instead of piping empty/truncated input to tar
+SHELL ["/bin/ash", "-o", "pipefail", "-c"]
 RUN curl -fsSL "https://github.com/jwilder/dockerize/releases/download/v${DOCKERIZE_VERSION}/dockerize-linux-${TARGETARCH}-v${DOCKERIZE_VERSION}.tar.gz" \
       | tar -xz -C / dockerize \
  && chmod 0755 /dockerize
