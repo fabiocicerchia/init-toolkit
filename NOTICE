@@ -1,0 +1,45 @@
+init-toolkit
+Copyright 2026 Fabio Cicerchia
+
+This product includes software developed by
+Fabio Cicerchia (https://github.com/fabiocicerchia).
+
+The Apache-2.0 license on this repository covers the packaging only: the
+Dockerfile and the helper scripts under bin/. The published container
+image redistributes the following third-party software verbatim, each
+under its own license:
+
+  dockerize 0.9.3   MIT  https://github.com/jwilder/dockerize
+  wait-for-it.sh    MIT  https://github.com/vishnubob/wait-for-it
+                    (commit 81b1373f17855a4dc21156cfe1694c31d7d1792e)
+
+--------------------------------------------------------------------
+dockerize
+Copyright 2015-2026 Jason Wilder.
+Licensed under the MIT License.
+https://github.com/jwilder/dockerize/blob/master/LICENSE
+
+wait-for-it
+Copyright (c) 2016 Giles Hall.
+Licensed under the MIT License.
+https://github.com/vishnubob/wait-for-it/blob/master/LICENSE
+--------------------------------------------------------------------
+
+Installed at runtime from Alpine Linux, each under its own license:
+
+  bash            GPL-3.0-or-later  https://git.savannah.gnu.org/cgit/bash.git
+  curl            curl (MIT-like)   https://curl.se/
+  netcat-openbsd  BSD-3-Clause      https://packages.debian.org/netcat-openbsd
+
+GNU tar (GPL-3.0-or-later) is used in the build stage only and is not
+present in the published image.
+
+CORRESPONDING SOURCE (GPL-3.0 section 6)
+
+bash is an unmodified Alpine Linux package. Alpine publishes the
+corresponding source and build recipe at
+https://gitlab.alpinelinux.org/alpine/aports — run `apk info -a bash`
+inside the image to resolve the exact version.
+
+The base image is Alpine Linux; its packages carry their own licenses
+(musl MIT, busybox GPL-2.0-only).
