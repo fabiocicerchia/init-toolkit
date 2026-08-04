@@ -25,6 +25,7 @@ LABEL org.opencontainers.image.title="init-toolkit" \
       org.opencontainers.image.source="https://github.com/fabiocicerchia/init-toolkit"
 RUN apk add --no-cache bash=5.3.9-r1 curl=8.21.0-r0 netcat-openbsd=1.234.1-r0 ca-certificates=20260611-r0 \
  && adduser -D -u 10001 init
+COPY NOTICE /NOTICE
 COPY --from=fetch /dockerize /usr/local/bin/dockerize
 COPY --from=fetch /wait-for-it /usr/local/bin/wait-for-it
 COPY bin/ /usr/local/bin/
