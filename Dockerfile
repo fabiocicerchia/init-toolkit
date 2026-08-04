@@ -21,7 +21,7 @@ ARG DOCKERIZE_VERSION
 LABEL org.opencontainers.image.title="init-toolkit" \
       org.opencontainers.image.description="wait-for-it + dockerize + healthcheck helpers for init containers" \
       org.opencontainers.image.version="${DOCKERIZE_VERSION}" \
-      org.opencontainers.image.licenses="Apache-2.0" \
+      org.opencontainers.image.licenses="Apache-2.0 AND GPL-3.0-or-later AND MIT" \
       org.opencontainers.image.source="https://github.com/fabiocicerchia/init-toolkit"
 RUN apk add --no-cache bash=5.3.9-r1 curl=8.21.0-r0 netcat-openbsd=1.234.1-r0 ca-certificates=20260611-r0 \
  && adduser -D -u 10001 init
