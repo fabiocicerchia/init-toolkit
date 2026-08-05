@@ -1,6 +1,4 @@
 # Documentation
 
-- [Getting Started](getting-started.md) — pull the image and gate your first container on a dependency.
-- [Architecture](architecture.md) — what's inside the image and how the helpers fit together.
-
-Runnable examples live in [`../examples/`](../examples/).
+- [Architecture](architecture.md) — high-level design and components.
+- [Getting Started](getting-started.md) — setup, first run and day-to-day use.
