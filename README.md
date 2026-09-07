@@ -59,6 +59,28 @@ COPY --from=ghcr.io/fabiocicerchia/init-toolkit /usr/local/bin/healthcheck-http 
 HEALTHCHECK CMD ["healthcheck-http", "http://127.0.0.1:8080/healthz"]
 ```
 
+## Development
+
+### Make targets
+
+`make help` lists them. Every repository in this estate exposes the same eight
+verbs, so you do not have to read a Makefile to find out how to build or test it
+(FC-GEN-057).
+
+| Verb      | What it does here                                       |
+| --------- | ------------------------------------------------------- |
+| `setup`   | Install the pre-commit hook                             |
+| `install` | `docker pull` the published image                       |
+| `build`   | Build the image locally                                 |
+| `test`    | Build, then run the smoke tests                         |
+| `lint`    | `pre-commit run --all-files` — the whole gate           |
+| `run`     | Run `wait-for` from the image; `ARGS` are its arguments |
+| `format`  | Rewrite what the gate can fix: whitespace, endings, EOF |
+| `analyze` | `trivy fs` — the same scan CI runs                      |
+
+`make push` and `make release` publish the image; the release workflow is what
+normally runs them.
+
 ## Documentation
 
 Full docs live in [`docs/`](docs/). Runnable examples live in
