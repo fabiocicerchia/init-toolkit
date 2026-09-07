@@ -13,12 +13,12 @@ docker pull ghcr.io/fabiocicerchia/init-toolkit:latest
 
 It bundles four helpers on `PATH`:
 
-| Binary             | Waits on / does                                            |
-|--------------------|------------------------------------------------------------|
-| `wait-for`         | `tcp://` and `http(s)://` targets, then `exec`s a command  |
-| `wait-for-it`      | the classic TCP wait script (pinned upstream commit)       |
-| `dockerize`        | wait for deps + render config templates from env           |
-| `healthcheck-http` / `healthcheck-tcp` | one-line `HEALTHCHECK` probes          |
+| Binary                                 | Waits on / does                                           |
+| -------------------------------------- | --------------------------------------------------------- |
+| `wait-for`                             | `tcp://` and `http(s)://` targets, then `exec`s a command |
+| `wait-for-it`                          | the classic TCP wait script (pinned upstream commit)      |
+| `dockerize`                            | wait for deps + render config templates from env          |
+| `healthcheck-http` / `healthcheck-tcp` | one-line `HEALTHCHECK` probes                             |
 
 ## First run
 
