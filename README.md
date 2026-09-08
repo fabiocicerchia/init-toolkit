@@ -24,12 +24,6 @@ checks. Small surface, easy to keep patched.
 ## Install
 
 ```sh
-curl -fsSL https://raw.githubusercontent.com/fabiocicerchia/init-toolkit/main/install.sh | bash
-```
-
-Or pull the image directly:
-
-```sh
 docker pull ghcr.io/fabiocicerchia/init-toolkit:latest
 ```
 
