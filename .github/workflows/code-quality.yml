@@ -24,7 +24,7 @@ jobs:
 
       # Enforce .editorconfig (indentation, EOL, trailing whitespace).
       - name: editorconfig-checker
-        uses: editorconfig-checker/action-editorconfig-checker@d2ed4fd072ae6f887e9407c909af0f585d2ad9f4  # v2
+        uses: editorconfig-checker/action-editorconfig-checker@51f63319f592f97930c73d9c46184d20bd206393  # v3.0.0
         with:
           # The action is pinned but the tool it downloads was not: it
           # resolved `latest`, and editorconfig-checker v4.0.0 renamed its
@@ -41,7 +41,7 @@ jobs:
 
       # Catch common typos in code and docs.
       - name: typos
-        uses: crate-ci/typos@8a48f81b6c64dcfea44b3633223084c4be58ac5f  # v1.49.0
+        uses: crate-ci/typos@d43b6c087ac471e2ea7b8af622ff15f05c0c365b  # v1.50.1
 
       # pre-commit runs hadolint + shellcheck (see .pre-commit-config.yaml).
       - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97  # v7.0.0
