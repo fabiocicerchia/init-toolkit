@@ -8,7 +8,7 @@ PLATFORMS ?= linux/amd64,linux/arm64
 
 .DEFAULT_GOAL := help
 
-.PHONY: help setup install build test lint run format analyze push release
+.PHONY: help setup install uninstall build test lint run format analyze push release
 
 help: ## Show this help
 	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | \
@@ -26,8 +26,18 @@ lint: ## Run the whole gate — every hook, every file
 test: build ## Build + run smoke tests
 	./test.sh $(IMAGE):$(VERSION)
 
-install: ## Pull the published image onto this machine
-	docker pull $(IMAGE):$(VERSION)
+install: ## Install the tools and their man pages (DESTDIR/PREFIX honoured)
+	install -d "$(DESTDIR)$(PREFIX)/bin" "$(DESTDIR)$(PREFIX)/share/man/man1"
+	install -m 0755 bin/wait-for "$(DESTDIR)$(PREFIX)/bin/wait-for"
+	install -m 0644 man/wait-for.1 "$(DESTDIR)$(PREFIX)/share/man/man1/wait-for.1"
+	install -m 0755 bin/healthcheck-http "$(DESTDIR)$(PREFIX)/bin/healthcheck-http"
+	install -m 0644 man/healthcheck-http.1 "$(DESTDIR)$(PREFIX)/share/man/man1/healthcheck-http.1"
+	install -m 0755 bin/healthcheck-tcp "$(DESTDIR)$(PREFIX)/bin/healthcheck-tcp"
+	install -m 0644 man/healthcheck-tcp.1 "$(DESTDIR)$(PREFIX)/share/man/man1/healthcheck-tcp.1"
+	@echo "installed wait-for healthcheck-http healthcheck-tcp into $(DESTDIR)$(PREFIX)/bin"
+
+uninstall: ## Remove what `make install` put down
+	rm -f "$(DESTDIR)$(PREFIX)/bin/wait-for" "$(DESTDIR)$(PREFIX)/share/man/man1/wait-for.1" "$(DESTDIR)$(PREFIX)/bin/healthcheck-http" "$(DESTDIR)$(PREFIX)/share/man/man1/healthcheck-http.1" "$(DESTDIR)$(PREFIX)/bin/healthcheck-tcp" "$(DESTDIR)$(PREFIX)/share/man/man1/healthcheck-tcp.1"
 
 run: build ## Run wait-for from the image (ARGS are its arguments)
 	docker run --rm $(IMAGE):$(VERSION) $(ARGS)

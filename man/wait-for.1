@@ -1,0 +1,56 @@
+.TH WAIT\-FOR 1 "2026-09" "init-toolkit" "User Commands"
+.SH NAME
+wait-for \- wait for TCP and HTTP dependencies, then exec a command
+.SH SYNOPSIS
+.B wait-for
+.I TARGET
+.RI [ TARGET ...]
+.RB [ \-t
+.IR SECONDS ]
+.RB [ \-\-
+.I command
+.RI [ args ...]]
+.SH DESCRIPTION
+One front door for the readiness checks an init container keeps
+re-implementing. Each TARGET is a URL:
+.BI tcp:// host : port
+targets are probed with netcat, and
+.BI http:// ...
+or
+.BI https:// ...
+targets must answer 2xx or 3xx.
+.PP
+When a command follows
+.BR \-\- ,
+it is exec'd once every target is ready, so this can be a container's
+entrypoint without leaving a shell in the process tree.
+.SH OPTIONS
+.TP
+.BI \-t " SECONDS"
+Overall timeout (default 60). Exits non-zero if a target is still down.
+.SH EXIT STATUS
+.TP
+.B 0
+Every target became ready (or the exec'd command's own status).
+.TP
+.B non-zero
+The timeout expired with a target still unreachable.
+.SH EXAMPLES
+.PP
+Wait for two dependencies, then start the app:
+.PP
+.RS
+.B wait-for tcp://db:5432 tcp://redis:6379 \-t 90 \-\- ./app
+.RE
+.PP
+Wait on a health endpoint:
+.PP
+.RS
+.B wait-for http://api:8080/healthz
+.RE
+.SH SEE ALSO
+.BR healthcheck-http (1),
+.BR healthcheck-tcp (1),
+.BR nc (1).
+Project documentation:
+https://github.com/fabiocicerchia/init-toolkit
