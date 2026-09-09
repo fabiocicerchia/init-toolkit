@@ -1,0 +1,31 @@
+.TH HEALTHCHECK\-TCP 1 "2026-09" "init-toolkit" "User Commands"
+.SH NAME
+healthcheck-tcp \- HEALTHCHECK-friendly TCP probe
+.SH SYNOPSIS
+.B healthcheck-tcp
+.I HOST
+.I PORT
+.SH DESCRIPTION
+Opens a TCP connection and exits 0 if it succeeds, for a container
+.B HEALTHCHECK
+against a service that speaks no HTTP.
+.SH EXIT STATUS
+.TP
+.B 0
+The port accepted a connection.
+.TP
+.B 1
+It did not.
+.SH EXAMPLES
+.PP
+As a Docker HEALTHCHECK:
+.PP
+.RS
+.B HEALTHCHECK CMD healthcheck-tcp localhost 5432
+.RE
+.SH SEE ALSO
+.BR wait-for (1),
+.BR healthcheck-http (1).
+Project documentation:
+.UR https://github.com/fabiocicerchia/init-toolkit
+.UE

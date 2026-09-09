@@ -1,0 +1,32 @@
+.TH HEALTHCHECK\-HTTP 1 "2026-09" "init-toolkit" "User Commands"
+.SH NAME
+healthcheck-http \- HEALTHCHECK-friendly HTTP probe
+.SH SYNOPSIS
+.B healthcheck-http
+.I URL
+.RI [ timeout-seconds ]
+.SH DESCRIPTION
+Probes one URL and exits 0 when it answers healthily, for use as a
+container
+.B HEALTHCHECK
+without pulling curl and a shell pipeline into the image.
+.SH EXIT STATUS
+.TP
+.B 0
+The endpoint answered.
+.TP
+.B 1
+It did not, or the timeout expired.
+.SH EXAMPLES
+.PP
+As a Docker HEALTHCHECK:
+.PP
+.RS
+.B HEALTHCHECK CMD healthcheck-http http://localhost:8080/healthz 3
+.RE
+.SH SEE ALSO
+.BR wait-for (1),
+.BR healthcheck-tcp (1).
+Project documentation:
+.UR https://github.com/fabiocicerchia/init-toolkit
+.UE
