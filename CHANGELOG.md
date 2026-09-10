@@ -4,6 +4,18 @@ All notable changes to this project are documented here. The format is based
 on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and this project
 adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.3.0](https://github.com/fabiocicerchia/init-toolkit/compare/v0.2.2...v0.3.0) (2026-09-10)
+
+
+### Features
+
+* **packaging:** man page, and an install that stages rather than pulls ([#54](https://github.com/fabiocicerchia/init-toolkit/issues/54)) ([3d675fa](https://github.com/fabiocicerchia/init-toolkit/commit/3d675fab6b8ec0ad50baf20b844289bb4fe63dd0))
+
+
+### Bug Fixes
+
+* **release:** grant id-token on the job that calls the signing workflow ([#57](https://github.com/fabiocicerchia/init-toolkit/issues/57)) ([ff94fe4](https://github.com/fabiocicerchia/init-toolkit/commit/ff94fe43fe3579b4f7a611a96771ea68916429b9))
+
 ## [0.2.2](https://github.com/fabiocicerchia/init-toolkit/compare/v0.2.1...v0.2.2) (2026-09-08)
 
 
