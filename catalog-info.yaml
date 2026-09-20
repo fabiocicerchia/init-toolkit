@@ -1,0 +1,23 @@
+# Backstage catalog entry, read by paved's scorecard plugin.
+#
+# Every check paved scores is derived from this file alone — no cluster
+# access, no CI credentials. What is absent here is absent from the score.
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: init-toolkit
+  description: >-
+      Minimal, composable init system for containers: handles signal propagation, zombie reaping, env
+      templating, and health-check gating with zero deps.
+  annotations:
+    github.com/project-slug: fabiocicerchia/init-toolkit
+    backstage.io/source-location: url:https://github.com/fabiocicerchia/init-toolkit/
+    backstage.io/techdocs-ref: dir:.
+  links:
+    - url: https://github.com/fabiocicerchia/init-toolkit
+      title: Source
+spec:
+  type: library
+  lifecycle: production
+  owner: group:default/kodebeat
+  system: oss-tools
