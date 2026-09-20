@@ -4,6 +4,15 @@ All notable changes to this project are documented here. The format is based
 on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and this project
 adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.3.2](https://github.com/fabiocicerchia/init-toolkit/compare/v0.3.1...v0.3.2) (2026-09-20)
+
+
+### Bug Fixes
+
+* **ci:** keep actions: read on the job that uploads sarif ([#74](https://github.com/fabiocicerchia/init-toolkit/issues/74)) ([4f7ef25](https://github.com/fabiocicerchia/init-toolkit/commit/4f7ef254ffc7265ead7dc71723a6d9ef3b2d8c76))
+* **docker:** bump ca-certificates pin to 20260909-r0 ([#69](https://github.com/fabiocicerchia/init-toolkit/issues/69)) ([c6858b6](https://github.com/fabiocicerchia/init-toolkit/commit/c6858b6b28cf0e69173e702d62c340db451461f8))
+* **docker:** bump ca-certificates to the version alpine 3.24 still has ([#71](https://github.com/fabiocicerchia/init-toolkit/issues/71)) ([0d046e9](https://github.com/fabiocicerchia/init-toolkit/commit/0d046e9bf7a9e2c8f62eadf7ccbd73cf590602da))
+
 ## [0.3.1](https://github.com/fabiocicerchia/init-toolkit/compare/v0.3.0...v0.3.1) (2026-09-11)
 
 
