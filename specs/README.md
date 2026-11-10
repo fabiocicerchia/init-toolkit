@@ -11,12 +11,12 @@ The small, hardened image that bundles every helper for init containers and entr
 ## Developer tooling
 The day-to-day commands contributors use to build, check, run and ship the project.
 
-- **Local installation**: [Installing the helpers on a host](developer-tooling/local-install/local-install.feature) (3)
+- **Local installation**: [Installing the helpers on a host](developer-tooling/local-install/local-install.feature) (2)
 
 ## Documentation
 How the project's documentation site looks and presents itself.
 
-- **Site theme and branding**: [Branding the documentation site](documentation/docs-theme/docs-branding.feature) (4)
+- **Site theme and branding**: [Branding the documentation site](documentation/docs-theme/docs-branding.feature) (1)
 
 ## Health probes
 One-shot checks suited to container HEALTHCHECK and liveness/readiness probes.

@@ -6,7 +6,7 @@ Feature: Installing the helpers on a host
     Given the operator has a checkout of init-toolkit
 
   @id:developer-tooling.local-install.001 @rule:tooling.install.places-tools-and-man-pages-under-prefix @inferred @source:Makefile#install
-  Scenario Outline: Installing puts the three helpers and their man pages under the chosen prefix
+  Scenario Outline: Installing puts the three helpers and their man pages under the chosen prefix, which defaults to the filesystem root
     Given the operator chooses DESTDIR "<destdir>" and PREFIX "<prefix>"
     When the operator runs make install
     Then wait-for, healthcheck-http and healthcheck-tcp are in "<destdir><prefix>/bin" and are executable
@@ -17,14 +17,7 @@ Feature: Installing the helpers on a host
       | destdir      | prefix     |
       |              | /usr/local |
       | /tmp/pkgroot | /usr       |
-
-  @id:developer-tooling.local-install.002 @rule:tooling.install.no-default-prefix @inferred @source:Makefile#install @questionable
-  Scenario: Installing without a prefix writes into the root of the filesystem
-    Given the operator sets neither DESTDIR nor PREFIX
-    When the operator runs make install
-    Then the helpers are written to "/bin"
-    And the man pages are written to "/share/man/man1"
-    And the operator sees "installed wait-for healthcheck-http healthcheck-tcp into /bin"
+      |              |            |
 
   @id:developer-tooling.local-install.003 @rule:tooling.install.uninstall-removes-installed-files @inferred @source:Makefile#uninstall
   Scenario: Uninstalling removes exactly what installing put down
