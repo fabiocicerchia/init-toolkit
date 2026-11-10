@@ -1,0 +1,668 @@
+{
+ "excluded": {
+  "bin/healthcheck-http": [
+   {
+    "candidate": "healthcheck-http is installed to $(DESTDIR)$(PREFIX)/bin together with its man page",
+    "covered_by": "",
+    "reason": "TECH_BUILD",
+    "source": "Makefile:33-34"
+   },
+   {
+    "candidate": "Smoke test checks that healthcheck-http exists in the image",
+    "covered_by": "",
+    "reason": "TECH_DEVTOOLING",
+    "source": "test.sh:7"
+   },
+   {
+    "candidate": "The response body is thrown away (-o /dev/null)",
+    "covered_by": "",
+    "reason": "INTERNAL_MECHANISM",
+    "source": "bin/healthcheck-http:5"
+   },
+   {
+    "candidate": "The probe replaces itself with curl (exec)",
+    "covered_by": "",
+    "reason": "INTERNAL_MECHANISM",
+    "source": "bin/healthcheck-http:5"
+   },
+   {
+    "candidate": "Unknown host and other curl transport failures (DNS, TLS) fail the probe",
+    "covered_by": "health-probes.http.unhealthy-endpoint-fails",
+    "reason": "TRIVIAL",
+    "source": "bin/healthcheck-http:5"
+   }
+  ],
+  "bin/healthcheck-tcp": [
+   {
+    "candidate": "healthcheck-tcp is installed into PREFIX/bin with its man page by make install",
+    "covered_by": "",
+    "reason": "TECH_BUILD",
+    "source": "Makefile#install"
+   },
+   {
+    "candidate": "healthcheck-tcp is present on PATH in the image (smoke test)",
+    "covered_by": "",
+    "reason": "TECH_DEVTOOLING",
+    "source": "test.sh"
+   },
+   {
+    "candidate": "Probe replaces its shell with nc (exec) so the probe's PID/exit is netcat's",
+    "covered_by": "",
+    "reason": "INTERNAL_MECHANISM",
+    "source": "bin/healthcheck-tcp#healthcheck-tcp"
+   }
+  ],
+  "bin/wait-for": [
+   {
+    "candidate": "Each HTTP attempt is capped at 5 seconds",
+    "covered_by": "",
+    "reason": "INTERNAL_MECHANISM",
+    "source": "bin/wait-for#wait_one"
+   },
+   {
+    "candidate": "Retry interval of 1 second between attempts",
+    "covered_by": "",
+    "reason": "INTERNAL_MECHANISM",
+    "source": "bin/wait-for#wait_one"
+   },
+   {
+    "candidate": "Missing or non-numeric -t value produces a raw bash error",
+    "covered_by": "",
+    "reason": "TRIVIAL",
+    "source": "bin/wait-for#wait_one"
+   },
+   {
+    "candidate": "Netcat/curl error output is suppressed while polling",
+    "covered_by": "",
+    "reason": "INTERNAL_MECHANISM",
+    "source": "bin/wait-for#wait_one"
+   },
+   {
+    "candidate": "Options and targets may be given in any order before --",
+    "covered_by": "",
+    "reason": "TRIVIAL",
+    "source": "bin/wait-for#wait_one"
+   }
+  ],
+  "docs/stylesheets": [
+   {
+    "candidate": "Translucent blurred header with hairline divider and shadow on scroll",
+    "covered_by": "",
+    "reason": "INTERNAL_MECHANISM",
+    "source": "docs/stylesheets/extra.css#.md-header"
+   },
+   {
+    "candidate": "Heading weights, letter-spacing and line-height for h1–h3",
+    "covered_by": "",
+    "reason": "TRIVIAL",
+    "source": "docs/stylesheets/extra.css#.md-typeset h1"
+   },
+   {
+    "candidate": "Rounded, bordered code blocks",
+    "covered_by": "",
+    "reason": "TRIVIAL",
+    "source": "docs/stylesheets/extra.css#.md-typeset .highlight"
+   },
+   {
+    "candidate": "Tables drawn as rounded cards with uppercase headers (the comment says they scroll on narrow screens, but this rule sets overflow: hidden; any scrolling comes from Material's wrapper)",
+    "covered_by": "",
+    "reason": "TRIVIAL",
+    "source": "docs/stylesheets/extra.css#.md-typeset table:not([class])"
+   },
+   {
+    "candidate": "Pill-shaped buttons that lift on hover; spacing between adjacent hero buttons",
+    "covered_by": "",
+    "reason": "TRIVIAL",
+    "source": "docs/stylesheets/extra.css#.md-typeset .md-button"
+   },
+   {
+    "candidate": "Hero section centring, padding and tagline size",
+    "covered_by": "",
+    "reason": "TRIVIAL",
+    "source": "docs/stylesheets/extra.css#.md-typeset .hero"
+   },
+   {
+    "candidate": "Feature cards lift on hover with an accent-tinted border (colour part covered by the palette scenario)",
+    "covered_by": "docs.theme.shared-accent-palette",
+    "reason": "DUPLICATE_OF",
+    "source": "docs/stylesheets/extra.css#.md-typeset .grid.cards > ul > li:hover"
+   },
+   {
+    "candidate": "Bold nav title and active nav link; dimmed inactive tabs",
+    "covered_by": "",
+    "reason": "TRIVIAL",
+    "source": "docs/stylesheets/extra.css#.md-nav__title"
+   },
+   {
+    "candidate": "Footer background, divider and muted link colour",
+    "covered_by": "",
+    "reason": "TRIVIAL",
+    "source": "docs/stylesheets/extra.css#.md-footer-meta"
+   },
+   {
+    "candidate": "Smooth scrolling for in-page anchors",
+    "covered_by": "",
+    "reason": "TRIVIAL",
+    "source": "docs/stylesheets/extra.css#html"
+   }
+  ],
+  "init-toolkit/dockerfile": [
+   {
+    "candidate": "Base image pinned by digest (alpine:3.24@sha256:be26...)",
+    "covered_by": "",
+    "reason": "TECH_BUILD",
+    "source": "Dockerfile#fetch stage"
+   },
+   {
+    "candidate": "Exact apk package versions pinned (curl, ca-certificates, tar, bash, netcat-openbsd)",
+    "covered_by": "",
+    "reason": "TECH_BUILD",
+    "source": "Dockerfile#final stage"
+   },
+   {
+    "candidate": "pipefail makes a failed dockerize download abort the build",
+    "covered_by": "",
+    "reason": "TECH_BUILD",
+    "source": "Dockerfile#fetch stage"
+   },
+   {
+    "candidate": "Multi-stage build keeps curl/tar fetch tooling out of the final image",
+    "covered_by": "",
+    "reason": "TECH_BUILD",
+    "source": "Dockerfile#fetch stage"
+   },
+   {
+    "candidate": "Runtime packages bash, curl, netcat-openbsd installed for the helpers",
+    "covered_by": "",
+    "reason": "INTERNAL_MECHANISM",
+    "source": "Dockerfile#final stage"
+   },
+   {
+    "candidate": "Image description label text",
+    "covered_by": "",
+    "reason": "TRIVIAL",
+    "source": "Dockerfile#final stage"
+   },
+   {
+    "candidate": "Arm64 build selects arm64 wait-for-it",
+    "covered_by": "image.tools.binaries-match-platform",
+    "reason": "DUPLICATE_OF",
+    "source": "Dockerfile#fetch stage"
+   },
+   {
+    "candidate": "Every readiness helper is available on the PATH",
+    "covered_by": "",
+    "reason": "UNVERIFIABLE",
+    "source": "Dockerfile#final stage"
+   },
+   {
+    "candidate": "The vendored tools are fixed, known releases",
+    "covered_by": "",
+    "reason": "UNVERIFIABLE",
+    "source": "Dockerfile#fetch stage"
+   },
+   {
+    "candidate": "The bundled dockerize matches the image's platform",
+    "covered_by": "",
+    "reason": "UNVERIFIABLE",
+    "source": "Dockerfile#fetch stage"
+   },
+   {
+    "candidate": "The image ships a NOTICE and declares its mixed licences",
+    "covered_by": "",
+    "reason": "UNVERIFIABLE",
+    "source": "Dockerfile#final stage"
+   },
+   {
+    "candidate": "The image's version label reports the bundled dockerize version",
+    "covered_by": "",
+    "reason": "UNVERIFIABLE",
+    "source": "Dockerfile#final stage"
+   },
+   {
+    "candidate": "The image runs as an unprivileged user by default",
+    "covered_by": "",
+    "reason": "UNVERIFIABLE",
+    "source": "Dockerfile#final stage"
+   }
+  ],
+  "init-toolkit/makefile": [
+   {
+    "candidate": "make with no target prints every verb with its description (help is the default goal)",
+    "covered_by": "",
+    "reason": "TECH_BUILD",
+    "source": "Makefile#help"
+   },
+   {
+    "candidate": "make setup installs the pre-commit hook",
+    "covered_by": "",
+    "reason": "TECH_BUILD",
+    "source": "Makefile#setup"
+   },
+   {
+    "candidate": "make build tags the image IMAGE:VERSION from version.txt",
+    "covered_by": "",
+    "reason": "TECH_BUILD",
+    "source": "Makefile#build"
+   },
+   {
+    "candidate": "make lint runs every pre-commit hook on every file",
+    "covered_by": "",
+    "reason": "TECH_BUILD",
+    "source": "Makefile#lint"
+   },
+   {
+    "candidate": "make test builds the image and runs test.sh against it",
+    "covered_by": "",
+    "reason": "TECH_BUILD",
+    "source": "Makefile#test"
+   },
+   {
+    "candidate": "make run builds and runs wait-for from the image with ARGS",
+    "covered_by": "",
+    "reason": "TECH_BUILD",
+    "source": "Makefile#run"
+   },
+   {
+    "candidate": "make format runs the whitespace/EOF/line-ending fixers and ignores their non-zero exits",
+    "covered_by": "",
+    "reason": "TECH_BUILD",
+    "source": "Makefile#format"
+   },
+   {
+    "candidate": "make analyze refuses with exit 69 and an install hint when trivy is missing, else scans for CRITICAL/HIGH vulns, misconfig and secrets",
+    "covered_by": "",
+    "reason": "TECH_BUILD",
+    "source": "Makefile#analyze"
+   },
+   {
+    "candidate": "make push builds and pushes the single-arch IMAGE:VERSION",
+    "covered_by": "",
+    "reason": "TECH_BUILD",
+    "source": "Makefile#push"
+   },
+   {
+    "candidate": "make release builds amd64+arm64 and pushes tags VERSION and latest",
+    "covered_by": "",
+    "reason": "TECH_BUILD",
+    "source": "Makefile#release"
+   },
+   {
+    "candidate": "IMAGE, VERSION and PLATFORMS can be overridden from the environment",
+    "covered_by": "",
+    "reason": "TECH_BUILD",
+    "source": "Makefile#IMAGE"
+   }
+  ]
+ },
+ "lifted": {
+  "bin/healthcheck-http": [],
+  "bin/healthcheck-tcp": [],
+  "bin/wait-for": [],
+  "docs/stylesheets": [
+   {
+    "from_source": "mkdocs.yml#theme",
+    "rule": "docs.theme.no-network-fonts"
+   }
+  ],
+  "init-toolkit/dockerfile": [
+   {
+    "from_source": "Dockerfile#final stage (adduser -u 10001 init; USER 10001)",
+    "rule": "image.security.runs-as-non-root"
+   }
+  ],
+  "init-toolkit/makefile": []
+ },
+ "retired": [
+  "developer-tooling.local-install.002",
+  "documentation.docs-theme.001",
+  "documentation.docs-theme.002",
+  "documentation.docs-theme.004"
+ ],
+ "scenarios": {
+  "container-image.image-defaults.001": {
+   "file": "specs/container-image/image-defaults/image-defaults.feature",
+   "fingerprint": "4c6072ed6764",
+   "human": false,
+   "rule": "image.entrypoint.arguments-go-to-wait-for",
+   "source": "Dockerfile#ENTRYPOINT",
+   "status": "inferred",
+   "test": "",
+   "tests": []
+  },
+  "container-image.image-defaults.002": {
+   "file": "specs/container-image/image-defaults/image-defaults.feature",
+   "fingerprint": "471c379634b3",
+   "human": false,
+   "rule": "image.entrypoint.default-shows-help",
+   "source": "Dockerfile#CMD",
+   "status": "inferred",
+   "test": "",
+   "tests": []
+  },
+  "container-image.image-defaults.003": {
+   "file": "specs/container-image/image-defaults/image-defaults.feature",
+   "fingerprint": "28e7fc5bdab9",
+   "human": false,
+   "rule": "image.runtime.no-health-check",
+   "source": "Dockerfile#HEALTHCHECK",
+   "status": "inferred",
+   "test": "",
+   "tests": []
+  },
+  "developer-tooling.local-install.001": {
+   "file": "specs/developer-tooling/local-install/local-install.feature",
+   "fingerprint": "2d2f10aeafc9",
+   "human": false,
+   "rule": "tooling.install.places-tools-and-man-pages-under-prefix",
+   "source": "Makefile#install",
+   "status": "inferred",
+   "test": "",
+   "tests": []
+  },
+  "developer-tooling.local-install.003": {
+   "file": "specs/developer-tooling/local-install/local-install.feature",
+   "fingerprint": "93674a50dd3c",
+   "human": false,
+   "rule": "tooling.install.uninstall-removes-installed-files",
+   "source": "Makefile#uninstall",
+   "status": "inferred",
+   "test": "",
+   "tests": []
+  },
+  "documentation.docs-theme.003": {
+   "file": "specs/documentation/docs-theme/docs-branding.feature",
+   "fingerprint": "564588beee72",
+   "human": false,
+   "rule": "docs.theme.no-network-fonts",
+   "source": "docs/stylesheets/extra.css#:root",
+   "status": "inferred",
+   "test": "",
+   "tests": []
+  },
+  "health-probes.http-probe.001": {
+   "file": "specs/health-probes/http-probe/http-health-probe.feature",
+   "fingerprint": "38404e796db9",
+   "human": false,
+   "rule": "health-probes.http.success-or-redirect-passes",
+   "source": "bin/healthcheck-http#exec curl",
+   "status": "inferred",
+   "test": "",
+   "tests": []
+  },
+  "health-probes.http-probe.002": {
+   "file": "specs/health-probes/http-probe/http-health-probe.feature",
+   "fingerprint": "38404e796db9",
+   "human": false,
+   "rule": "health-probes.http.unhealthy-endpoint-fails",
+   "source": "bin/healthcheck-http#exec curl",
+   "status": "inferred",
+   "test": "",
+   "tests": []
+  },
+  "health-probes.http-probe.003": {
+   "file": "specs/health-probes/http-probe/http-health-probe.feature",
+   "fingerprint": "38404e796db9",
+   "human": false,
+   "rule": "health-probes.http.timeout-fails",
+   "source": "bin/healthcheck-http#exec curl",
+   "status": "inferred",
+   "test": "",
+   "tests": []
+  },
+  "health-probes.http-probe.004": {
+   "file": "specs/health-probes/http-probe/http-health-probe.feature",
+   "fingerprint": "90603284b4de",
+   "human": false,
+   "rule": "health-probes.http.url-required",
+   "source": "bin/healthcheck-http#URL",
+   "status": "inferred",
+   "test": "",
+   "tests": []
+  },
+  "health-probes.tcp-probe.001": {
+   "file": "specs/health-probes/tcp-probe/tcp-health-probe.feature",
+   "fingerprint": "0530c8f84a30",
+   "human": false,
+   "rule": "health-probes.tcp-probe.pass-on-connect",
+   "source": "bin/healthcheck-tcp#healthcheck-tcp",
+   "status": "inferred",
+   "test": "",
+   "tests": []
+  },
+  "health-probes.tcp-probe.002": {
+   "file": "specs/health-probes/tcp-probe/tcp-health-probe.feature",
+   "fingerprint": "0530c8f84a30",
+   "human": false,
+   "rule": "health-probes.tcp-probe.requires-host-and-port",
+   "source": "bin/healthcheck-tcp#healthcheck-tcp",
+   "status": "inferred",
+   "test": "",
+   "tests": []
+  },
+  "health-probes.tcp-probe.003": {
+   "file": "specs/health-probes/tcp-probe/tcp-health-probe.feature",
+   "fingerprint": "0530c8f84a30",
+   "human": false,
+   "rule": "health-probes.tcp-probe.no-own-connect-deadline",
+   "source": "bin/healthcheck-tcp#healthcheck-tcp",
+   "status": "inferred",
+   "test": "",
+   "tests": []
+  },
+  "readiness-waiting.command-handoff.001": {
+   "file": "specs/readiness-waiting/command-handoff/command-handoff.feature",
+   "fingerprint": "5072e567f7e4",
+   "human": false,
+   "rule": "readiness.handoff.exec-after-all-up",
+   "source": "bin/wait-for#wait_one",
+   "status": "inferred",
+   "test": "",
+   "tests": []
+  },
+  "readiness-waiting.http-readiness.001": {
+   "file": "specs/readiness-waiting/http-readiness/http-readiness.feature",
+   "fingerprint": "5072e567f7e4",
+   "human": false,
+   "rule": "readiness.http.up-on-success-or-redirect",
+   "source": "bin/wait-for#wait_one",
+   "status": "inferred",
+   "test": "",
+   "tests": []
+  },
+  "readiness-waiting.multi-target-waits.001": {
+   "file": "specs/readiness-waiting/multi-target-waits/multi-target-waits.feature",
+   "fingerprint": "5072e567f7e4",
+   "human": false,
+   "rule": "readiness.multi.sequential-each-own-timeout",
+   "source": "bin/wait-for#wait_one",
+   "status": "inferred",
+   "test": "",
+   "tests": []
+  },
+  "readiness-waiting.tcp-readiness.001": {
+   "file": "specs/readiness-waiting/tcp-readiness/tcp-readiness.feature",
+   "fingerprint": "5072e567f7e4",
+   "human": false,
+   "rule": "readiness.tcp.up-when-port-accepts",
+   "source": "bin/wait-for#wait_one",
+   "status": "inferred",
+   "test": "",
+   "tests": []
+  },
+  "readiness-waiting.timeouts.001": {
+   "file": "specs/readiness-waiting/timeouts/readiness-timeouts.feature",
+   "fingerprint": "5072e567f7e4",
+   "human": false,
+   "rule": "readiness.timeouts.fail-after-deadline",
+   "source": "bin/wait-for#wait_one",
+   "status": "inferred",
+   "test": "",
+   "tests": []
+  },
+  "readiness-waiting.usage-and-errors.001": {
+   "file": "specs/readiness-waiting/usage-and-errors/wait-for-usage-and-errors.feature",
+   "fingerprint": "5072e567f7e4",
+   "human": false,
+   "rule": "readiness.usage.help-text",
+   "source": "bin/wait-for#wait_one",
+   "status": "inferred",
+   "test": "",
+   "tests": []
+  },
+  "readiness-waiting.usage-and-errors.002": {
+   "file": "specs/readiness-waiting/usage-and-errors/wait-for-usage-and-errors.feature",
+   "fingerprint": "5072e567f7e4",
+   "human": false,
+   "rule": "readiness.usage.input-errors-exit-64",
+   "source": "bin/wait-for#wait_one",
+   "status": "inferred",
+   "test": "",
+   "tests": []
+  }
+ },
+ "taxonomy": {
+  "domains": [
+   {
+    "areas": [
+     {
+      "description": "Waiting until a host:port given as a tcp:// target accepts connections.",
+      "slug": "tcp-readiness",
+      "title": "TCP readiness"
+     },
+     {
+      "description": "Waiting until an http:// or https:// endpoint answers with a success or redirect status.",
+      "slug": "http-readiness",
+      "title": "HTTP readiness"
+     },
+     {
+      "description": "Checking several dependencies one after another, with progress messages for each.",
+      "slug": "multi-target-waits",
+      "title": "Multiple targets"
+     },
+     {
+      "description": "Retrying once a second until a configurable deadline, then failing with a clear timeout message.",
+      "slug": "timeouts",
+      "title": "Timeouts and retries"
+     },
+     {
+      "description": "Replacing itself with the command given after `--` once every dependency is up.",
+      "slug": "command-handoff",
+      "title": "Command handoff"
+     },
+     {
+      "description": "Built-in help text, and distinct exit codes for missing targets and unsupported schemes.",
+      "slug": "usage-and-errors",
+      "title": "Usage and input errors"
+     }
+    ],
+    "description": "Blocking startup until the services a workload depends on are reachable, then handing off to the real command.",
+    "slug": "readiness-waiting",
+    "title": "Readiness waiting"
+   },
+   {
+    "areas": [
+     {
+      "description": "A single HTTP request with an adjustable timeout that passes or fails on the response status.",
+      "slug": "http-probe",
+      "title": "HTTP health probe"
+     },
+     {
+      "description": "A single connection attempt to a host and port that passes or fails depending on whether it connects.",
+      "slug": "tcp-probe",
+      "title": "TCP health probe"
+     }
+    ],
+    "description": "One-shot checks suited to container HEALTHCHECK and liveness/readiness probes.",
+    "slug": "health-probes",
+    "title": "Health probes"
+   },
+   {
+    "areas": [
+     {
+      "description": "Shipping wait-for and the health probes alongside pinned, vendored copies of wait-for-it and dockerize.",
+      "slug": "bundled-tools",
+      "title": "Bundled tools"
+     },
+     {
+      "description": "wait-for as the default entrypoint, help as the default command, and no health check on the image itself.",
+      "slug": "image-defaults",
+      "title": "Entrypoint and defaults"
+     },
+     {
+      "description": "Running as a non-root user on a digest-pinned base with exact package versions and a fail-fast fetch stage.",
+      "slug": "image-security",
+      "title": "Security and reproducibility"
+     },
+     {
+      "description": "Standard OCI labels and the shipped NOTICE covering the mixed licences of the bundled tools.",
+      "slug": "image-metadata",
+      "title": "Metadata and licensing"
+     },
+     {
+      "description": "Building for amd64 and arm64 and fetching the matching binaries for each platform.",
+      "slug": "multi-arch",
+      "title": "Multi-architecture support"
+     }
+    ],
+    "description": "The small, hardened image that bundles every helper for init containers and entrypoint wrappers.",
+    "slug": "container-image",
+    "title": "Container image"
+   },
+   {
+    "areas": [
+     {
+      "description": "Building the image locally and running wait-for from it with custom arguments.",
+      "slug": "build-and-run",
+      "title": "Build and run"
+     },
+     {
+      "description": "Running the pre-commit gate, auto-fixing whitespace issues and scanning for vulnerabilities, misconfiguration and secrets.",
+      "slug": "quality-gates",
+      "title": "Lint, format and analysis"
+     },
+     {
+      "description": "Building the image and running the smoke-test suite against it.",
+      "slug": "testing",
+      "title": "Smoke testing"
+     },
+     {
+      "description": "Installing and removing the helpers and their man pages on a host, honouring DESTDIR and PREFIX.",
+      "slug": "local-install",
+      "title": "Local installation"
+     },
+     {
+      "description": "Pushing single-arch images and multi-arch releases tagged with the version and latest.",
+      "slug": "publishing",
+      "title": "Publishing"
+     },
+     {
+      "description": "Installing the pre-commit hook and listing every available make verb.",
+      "slug": "contributor-setup",
+      "title": "Contributor setup and help"
+     }
+    ],
+    "description": "The day-to-day commands contributors use to build, check, run and ship the project.",
+    "slug": "developer-tooling",
+    "title": "Developer tooling"
+   },
+   {
+    "areas": [
+     {
+      "description": "The shared accent palette, typography and colour scheme used by the docs and the splash page.",
+      "slug": "docs-theme",
+      "title": "Site theme and branding"
+     },
+     {
+      "description": "Styling for hero sections, buttons, feature cards and other on-page elements, with nothing loaded over the network.",
+      "slug": "docs-components",
+      "title": "Page components"
+     }
+    ],
+    "description": "How the project's documentation site looks and presents itself.",
+    "slug": "documentation",
+    "title": "Documentation"
+   }
+  ]
+ }
+}
