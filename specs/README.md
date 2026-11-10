@@ -4,27 +4,32 @@ What this code does, one atomic Gherkin scenario per behaviour, read from the co
 Tags: `@verified` a test asserts it · `@inferred` read from the code only · `@gap` an entry point no test covers · `@human` written or amended by a person, never rewritten.
 
 ## Container image
+
 The small, hardened image that bundles every helper for init containers and entrypoint wrappers.
 
 - **Entrypoint and defaults**: [Running the image as an init container](container-image/image-defaults/image-defaults.feature) (3)
 
 ## Developer tooling
+
 The day-to-day commands contributors use to build, check, run and ship the project.
 
 - **Local installation**: [Installing the helpers on a host](developer-tooling/local-install/local-install.feature) (2)
 
 ## Documentation
+
 How the project's documentation site looks and presents itself.
 
 - **Site theme and branding**: [Branding the documentation site](documentation/docs-theme/docs-branding.feature) (1)
 
 ## Health probes
+
 One-shot checks suited to container HEALTHCHECK and liveness/readiness probes.
 
 - **HTTP health probe**: [Probing an HTTP endpoint for container health](health-probes/http-probe/http-health-probe.feature) (4)
 - **TCP health probe**: [Probing a service's health over TCP](health-probes/tcp-probe/tcp-health-probe.feature) (3)
 
 ## Readiness waiting
+
 Blocking startup until the services a workload depends on are reachable, then handing off to the real command.
 
 - **Command handoff**: [Starting the main command once dependencies are up](readiness-waiting/command-handoff/command-handoff.feature) (1)
